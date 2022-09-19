@@ -1,0 +1,32 @@
+<app-header></app-header>
+<div class="container-fluid bg-light-30p h-100 d-flex flex-column fit-height">
+  <div class="row" *ngIf="loading">
+    <div class="col">
+      <i class="fa fa-spinner spinning"></i>
+    </div>
+  </div>
+  <ng-container *ngIf="!loading">
+    <div class="container-fluid overflow-auto flex-grow-1 mt-1">
+      <div class="row mt-3">
+        <div class="col-12"></div>
+        <table>
+          <tr>
+            <th>Nom</th>
+            <th>Status</th>
+            <th>fenêtre du lancement</th>
+          </tr>
+
+          <tr
+            class="pointer"
+            *ngFor="let launch of launchs"
+            (click)="getLaunchDetails(launch.id)"
+          >
+            <td>{{ launch.name }}</td>
+            <td>{{ launch.status.name }}</td>
+            <td>{{ launch.window_start }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </ng-container>
+</div>
